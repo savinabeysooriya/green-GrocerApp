@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    tools:context=".signin">
+
+    <EditText
+        android:id="@+id/editphone"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="195dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginRight="74dp"
+        android:cursorVisible="true"
+        android:drawableLeft="@drawable/ic_action_user"
+        android:ems="10"
+        android:hint="Phone number"
+        android:inputType="phone"
+        android:textCursorDrawable="@null" />
+
+    <EditText
+        android:id="@+id/editpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editphone"
+        android:layout_alignLeft="@+id/editphone"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="257dp"
+        android:cursorVisible="true"
+        android:drawableLeft="@drawable/ic_action_password"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="numberPassword"
+        android:textCursorDrawable="@null"
+        />
+
+    <Button
+        android:id="@+id/Signbutton"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editphone"
+        android:layout_alignLeft="@+id/editphone"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginRight="105dp"
+        android:layout_marginBottom="88dp"
+        android:background="@color/colorPrimary"
+        android:text="SIGN IN"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="154dp"
+        android:layout_height="105dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="116dp"
+        android:layout_marginLeft="116dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginRight="114dp"
+        app:srcCompat="@drawable/ic_action_men" />
+</RelativeLayout>

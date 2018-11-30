@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "133395880639",
+    "firebase_url": "https://greengrocerapp1.firebaseio.com",
+    "project_id": "greengrocerapp1",
+    "storage_bucket": "greengrocerapp1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133395880639:android:9a9b9d6f1e32b7a4",
+        "android_client_info": {
+          "package_name": "com.savin.greengrocerapp1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133395880639-g3omiva37gime4arpej73kgo0462kr2m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.savin.greengrocerapp1",
+            "certificate_hash": "69b7d41e532e43fc9200f7ee1eacf4a88d0e8cc4"
+          }
+        },
+        {
+          "client_id": "133395880639-b58l5a139ir3q8bm81qic4b9s13nfr65.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3sKg6dHYOLeGm1Le7eHiB5OHQ-sUFiww"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133395880639-b58l5a139ir3q8bm81qic4b9s13nfr65.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

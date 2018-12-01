@@ -1,6 +1,7 @@
 package com.savin.greengrocerapp1;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.savin.greengrocerapp1.Common.Common;
 import com.savin.greengrocerapp1.Model.user;
 
 import java.io.Console;
@@ -56,7 +58,13 @@ public class signin extends AppCompatActivity {
                                 user userobj = dataSnapshot.child(editphone.getText().toString()).getValue(user.class);
 
                                 if (userobj.getPassword().equals(editpassword.getText().toString())) {
-                                    Toast.makeText(getApplicationContext(), "sign in successfully", Toast.LENGTH_SHORT).show();
+
+                                    Intent homeIntent = new Intent(signin.this,Home.class);
+                                    Common.currentUser = userobj;
+                                    startActivity(homeIntent);
+                                    finish();
+
+
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Sign in failed", Toast.LENGTH_SHORT).show();
                                 }

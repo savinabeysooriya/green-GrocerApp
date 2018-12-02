@@ -3,6 +3,7 @@ package com.savin.greengrocerapp1;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -15,9 +16,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.savin.greengrocerapp1.Common.Common;
+import com.savin.greengrocerapp1.Model.category;
+import com.savin.greengrocerapp1.ViewHolder.MarketViewHolder;
+import com.squareup.picasso.Picasso;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,7 +32,7 @@ public class Home extends AppCompatActivity
 
     TextView txtFullName;
 
-    RecyclerView recycler_market;
+    RecyclerView recyler_market;
     RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -61,10 +66,34 @@ public class Home extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         View headerView = navigationView.getHeaderView(0);
-        txtFullName = (TextView)findViewById(R.id.txtFullName);
+        txtFullName = (TextView)headerView.findViewById(R.id.txtFullName);
         txtFullName.setText(Common.currentUser.getName());
 
+        recyler_market = (RecyclerView)findViewById(R.id.recycler_menu);
+        recyler_market.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyler_market.setLayoutManager(layoutManager);
 
+        loadMenu();
+
+
+
+    }
+
+    private void loadMenu() {
+
+        FirebaseRecyclerAdapter<category,MarketViewHolder> adpter = new FirebaseRecyclerAdapter<category, MarketViewHolder>(category.class,R.layout.market_item,MarketViewHolder.class,Category){
+            @Override
+            protected void populateViewHolder(MarketViewHolder viewHolder, category model, int position) {
+
+                viewHolder.txtMarketName.setText(model.getName());
+                Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.imageView);
+
+                category clickItem = model;
+
+
+            }
+        };
     }
 
     @Override

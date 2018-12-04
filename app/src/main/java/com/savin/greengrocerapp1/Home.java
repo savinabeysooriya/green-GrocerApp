@@ -15,13 +15,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.savin.greengrocerapp1.Common.Common;
+import com.savin.greengrocerapp1.Interface.ItemClickListener;
 import com.savin.greengrocerapp1.Model.category;
-import com.savin.greengrocerapp1.ViewHolder.MarketViewHolder;
+import com.savin.greengrocerapp1.ViewHolder.MenuViewHolder;
 import com.squareup.picasso.Picasso;
 
 public class Home extends AppCompatActivity
@@ -32,7 +34,7 @@ public class Home extends AppCompatActivity
 
     TextView txtFullName;
 
-    RecyclerView recyler_market;
+    RecyclerView recyler_menu;
     RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -40,7 +42,7 @@ public class Home extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Market");
+        toolbar.setTitle("Menu");
         setSupportActionBar(toolbar);
 
         database = FirebaseDatabase.getInstance();
@@ -69,10 +71,10 @@ public class Home extends AppCompatActivity
         txtFullName = (TextView)headerView.findViewById(R.id.txtFullName);
         txtFullName.setText(Common.currentUser.getName());
 
-        recyler_market = (RecyclerView)findViewById(R.id.recycler_menu);
-        recyler_market.setHasFixedSize(true);
+        recyler_menu = (RecyclerView)findViewById(R.id.recycler_menu);
+        recyler_menu.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
-        recyler_market.setLayoutManager(layoutManager);
+        recyler_menu.setLayoutManager(layoutManager);
 
         loadMenu();
 
@@ -82,18 +84,28 @@ public class Home extends AppCompatActivity
 
     private void loadMenu() {
 
-        FirebaseRecyclerAdapter<category,MarketViewHolder> adpter = new FirebaseRecyclerAdapter<category, MarketViewHolder>(category.class,R.layout.market_item,MarketViewHolder.class,Category){
+        FirebaseRecyclerAdapter<category,MenuViewHolder> adapter= new FirebaseRecyclerAdapter<category, MenuViewHolder>(category.class,R.layout.menu_item,MenuViewHolder.class,Category){
             @Override
-            protected void populateViewHolder(MarketViewHolder viewHolder, category model, int position) {
+            protected void populateViewHolder(MenuViewHolder viewHolder, category model, int position) {
 
-                viewHolder.txtMarketName.setText(model.getName());
+                viewHolder.txtMenuName.setText(model.getName());
                 Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.imageView);
 
-                category clickItem = model;
+                final category clickItem = model;
+                viewHolder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position, Boolean isLongClick) {
+
+                        Toast.makeText(Home.this, ""+clickItem.getName(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
 
 
             }
         };
+
+        recyler_menu.setAdapter(adapter);
     }
 
     @Override
@@ -115,15 +127,7 @@ public class Home extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -134,19 +138,19 @@ public class Home extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_menu) {
             // Handle the camera action
+        } else if (id == R.id.nav_cart) {
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

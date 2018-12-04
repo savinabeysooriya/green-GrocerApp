@@ -9,18 +9,18 @@ import android.widget.TextView;
 import com.savin.greengrocerapp1.Interface.ItemClickListener;
 import com.savin.greengrocerapp1.R;
 
-public class MarketViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public TextView txtMarketName;
+    public TextView txtMenuName;
     public ImageView imageView;
 
     private ItemClickListener itemClickListener;
 
-    public MarketViewHolder(View itemView) {
+    public MenuViewHolder(View itemView) {
         super(itemView);
 
-        txtMarketName = (TextView)itemView.findViewById(R.id.Market_name);
-        imageView = (ImageView)itemView.findViewById(R.id.Market_image);
+        txtMenuName = (TextView)itemView.findViewById(R.id.menu_name);
+        imageView = (ImageView)itemView.findViewById(R.id.menu_image);
 
         itemView.setOnClickListener(this);
     }
@@ -30,5 +30,9 @@ public class MarketViewHolder extends RecyclerView.ViewHolder implements View.On
 
         itemClickListener.onClick(view,getAdapterPosition(),false);
 
+    }
+
+    public void setItemClickListener(ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
     }
 }

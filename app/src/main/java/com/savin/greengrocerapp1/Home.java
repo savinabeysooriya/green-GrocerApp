@@ -1,5 +1,6 @@
 package com.savin.greengrocerapp1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -36,6 +37,8 @@ public class Home extends AppCompatActivity
 
     RecyclerView recyler_menu;
     RecyclerView.LayoutManager layoutManager;
+
+    FirebaseRecyclerAdapter<category,MenuViewHolder> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +87,7 @@ public class Home extends AppCompatActivity
 
     private void loadMenu() {
 
-        FirebaseRecyclerAdapter<category,MenuViewHolder> adapter= new FirebaseRecyclerAdapter<category, MenuViewHolder>(category.class,R.layout.menu_item,MenuViewHolder.class,Category){
+       adapter= new FirebaseRecyclerAdapter<category, MenuViewHolder>(category.class,R.layout.menu_item,MenuViewHolder.class,Category){
             @Override
             protected void populateViewHolder(MenuViewHolder viewHolder, category model, int position) {
 
@@ -96,7 +99,10 @@ public class Home extends AppCompatActivity
                     @Override
                     public void onClick(View view, int position, Boolean isLongClick) {
 
-                        Toast.makeText(Home.this, ""+clickItem.getName(), Toast.LENGTH_SHORT).show();
+                       //get category id and send to Activity
+                        Intent foodList = new Intent(Home.this,FoodList.class);
+                        foodList.putExtra("CategoryId",adapter.getRef(position).getKey());
+                        startActivity(foodList);
                     }
                 });
 

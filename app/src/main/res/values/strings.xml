@@ -21,4 +21,12 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string-array name="values">
+        <item>choose the measure</item>
+        <item>250g</item>
+        <item>500g</item>
+        <item>1kg</item>
+        <item>2kg</item>
+        <item>5kg</item>
+    </string-array>
 </resources>

@@ -6,15 +6,17 @@ public class Food {
     private String Image;
     private String Discount;
     private String MenuId;
+    private String Price;
 
     public Food() {
     }
 
-    public Food(String name, String image, String discount, String menuId) {
+    public Food(String name, String image, String discount, String menuId ,String price) {
         Name = name;
         Image = image;
         Discount = discount;
         MenuId = menuId;
+        Price = price;
     }
 
     public String getName() {
@@ -47,6 +49,14 @@ public class Food {
 
     public void setMenuId(String menuId) {
         MenuId = menuId;
+    }
+
+    public String getPrice(){
+        return Price;
+    }
+
+    public void setPrice(String price){
+        Price = price;
     }
 }
 

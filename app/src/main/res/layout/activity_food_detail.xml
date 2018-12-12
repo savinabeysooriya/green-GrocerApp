@@ -126,6 +126,77 @@
 
 
             </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+
+                   
+                   >
+
+                   <ImageView
+                       android:layout_width="128dp"
+                       android:layout_height="128dp"
+                       android:src="@drawable/ic_account_box_black_24dp" />
+
+                  <LinearLayout
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:layout_margin="10dp">
+
+                      <TextView
+                          android:id="@+id/textView"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:text="Farmer Details"
+                          android:textStyle="bold"
+                          android:textSize="20sp"
+                          android:textColor="#060606"/>
+
+                      <TextView
+                          android:id="@+id/textView2"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:text="Ravi-Tangalle"
+
+                          android:textSize="15sp"
+                          android:textColor="#060606"/>
+                      <TextView
+                          android:id="@+id/textView3"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:text="0729695225"
+
+                          android:textSize="15sp"
+                          android:textColor="#060606"/>
+                      <TextView
+                          android:id="@+id/textView4"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:text="Ratings ******"
+                          android:textStyle="bold"
+                          android:textSize="15sp"
+                          android:textColor="#060606"/>
+
+
+
+
+
+                  </LinearLayout>
+               </LinearLayout>
+
+            </android.support.v7.widget.CardView>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
